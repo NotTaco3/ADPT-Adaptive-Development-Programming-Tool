@@ -1,0 +1,92 @@
+-- Made by Taco_Develops
+-- ADPT-Adaptive Development Programming Tool
+-- Changelog from v0.1 to v1.3
+-- Timeline: 03/10/25 - 26/12/25
+
+v0.1 - 03/10/25
+--- Initial project structure setup
+--- Created folders: frontend, backend, database, info
+--- Added main.adpt file for orchestration
+--- Implemented basic <id> system for module linking
+--- Added sample frontend HTML block
+--- Basic isolation per section (frontend/backend/database)
+
+v0.2 - 10/10/25
+--- Added CSS and JavaScript support in frontend
+--- Implemented /dis system for disabling language blocks
+--- Introduced multi-line (---) and single-line (--) note standard
+--- Added backend Python block support
+--- Added PostgreSQL block in database
+--- Updated main.adpt to link all modules via <link id="...">
+
+v0.3 - 20/10/25
+--- Added TypeScript support in frontend
+--- Added Lua support in backend
+--- Enforced max 3 languages per file per section
+--- Clarified ID-based linking rules for modules
+--- Created sample frontend component for testing
+
+v0.4 - 01/11/25
+--- Added backend languages: Java, Rust
+--- Added MySQL and SQLite database support
+--- Improved /dis system behavior (persist until removed)
+--- Added multi-line examples in frontend and backend
+
+v0.5 - 15/11/25
+--- Enhanced frontend linking system (React-style import via <html id="...">)
+--- Added sample frontend and backend interactions
+--- Updated info/syntax.adpt with all supported languages
+--- Added notes for each block in main.adpt example
+
+v0.6 - 22/11/25
+--- Added Dart and WASM/WebAssembly support in frontend
+--- Added MongoDB support in database
+--- Clarified first-used language disabling rule
+--- Improved testing workflow using /dis in all layers
+
+v0.7 - 30/11/25
+--- Expanded backend languages: C#, Go, C, PHP, Ruby, Perl, Elixir, Scala, Haskell, C++
+--- Updated main.adpt to include multi-language examples
+--- Improved isolation and linking across modules
+--- Added detailed /dis examples in all sample files
+
+v0.8 - 05/12/25
+--- Frontend component system fully working
+--- Modules can be tested independently
+--- /dis system integrated in main.adpt, frontend, backend, database
+--- Notes standardized with -- and --- for teaching
+
+v0.9 - 12/12/25
+--- Finalized language block rules: 3 per file per section
+--- Clarified HTML first-used disabling behavior
+--- Updated main.adpt heavily annotated example
+--- Info folder syntax reference finalized
+
+v1.0 - 18/12/25
+--- Improved modular linking system
+--- Added multi-file import example
+--- Expanded backend with Python, Lua, Java
+--- Expanded database with PostgreSQL, MySQL, SQLite, MongoDB
+
+v1.1 - 19/12/25
+--- Added TypeScript and WASM examples in frontend
+--- Frontend component linking behaves like React
+--- /dis system fully functional for all layers
+--- Annotations in all files expanded
+
+v1.2 - 22/12/25
+--- Backend isolation fully functional across all languages
+--- Database linking and multi-language support clarified
+--- First-used disabling rule finalized for frontend files
+--- Notes and examples standardized across main.adpt
+
+v1.3 - 24/12/25
+--- Full syntax reference finalized in info/syntax.adpt
+--- Changelog standardized and heavily annotated
+--- All multi-language, /dis, and ID-based linking behaviors documented
+--- Ready for testing with simplified frontend, backend, database setup
+
+v1.4 - 26/12/25
+--- Releasing the project today, just the syntax and previewing whilst I make the 
+--- Website and other things to display it so that it is accessable on VS Code as an extension!
+--- 

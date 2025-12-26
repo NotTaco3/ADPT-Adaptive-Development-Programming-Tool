@@ -1,0 +1,7 @@
+-- Made by Taco_Develops
+-- ADPT-Adaptive Development Programming Tool
+-- Main entry point demonstrating module linking using IDs
+
+import id="frontend frontend1.adpt"
+import id="backend backend1.adpt"
+import id=" database1.adpt"

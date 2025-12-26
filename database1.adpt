@@ -1,0 +1,36 @@
+-- Made by Taco_Develops
+-- ADPT Database Module 1
+-- Demonstrates PostgreSQL and MongoDB integration with sample data
+-- All data timestamps set to 26/12/25 16:14
+
+<id name="data">
+-- Unique ID for this database module
+
+<databases>
+-- Database section starts
+--- Multi-database example: PostgreSQL + MongoDB
+--- Each is isolated and can be imported separately
+---
+
+<postgresql id="postgres1">
+-- PostgreSQL block
+CREATE TABLE demo_table (
+    id SERIAL PRIMARY KEY,  
+    name TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT '2025-12-26 16:14:03'
+);
+
+INSERT INTO demo_table (name, created_at)
+VALUES ('cheese', '2025-12-26 16:14:03');
+</postgresql>
+
+<mongodb id="mongo1">
+-- MongoDB block
+db.demo_collection.insertMany([
+    { "name": "tomato", "created_at": new Date("2025-12-26T16:14:23Z") },
+    { "name": "bread", "created_at": new Date("2025-12-26T16:14:31Z") },
+    { "name": "cocaine", "created_at": new Date("2025-12-26T16:14:45Z") }
+]);
+</mongodb>
+
+</databases>

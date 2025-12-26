@@ -1,0 +1,50 @@
+-- Made by Taco_Develops
+-- ADPT Backend Module 1
+-- Multi-language backend: Java, Python, Ruby, Lua
+-- Python pulls data from database using ADPT import id="[id]+[filename]"
+
+<id name="backend1">
+-- Unique ID for this backend module
+
+<backend>
+-- Backend section starts
+---
+Multi-language backend example:
+- Java, Python, Ruby, Lua
+- Each prints a test message
+- Python pulls data from PostgreSQL and MongoDB via linked module
+---
+
+<java id="java1">
+-- Java test code
+public class TestJava {
+    public static void main(String[] args) {
+        System.out.println("Test from Java");  -- Simple output for testing
+    }
+}
+</java>
+
+<python id="python1">
+# Python test code
+print("Test from Python")
+
+</python>
+
+<ruby id="ruby1">
+# Ruby test code
+puts "Test from Ruby"  -- Simple output for testing
+</ruby>
+
+<lua id="lua1">
+-- Lua test code
+print("Test from Lua")  -- Simple output for testing
+</lua>
+
+</backend>
+-- End of backend section
+
+---
+Notes:
+-- Java, Python, Ruby, Lua blocks are fully isolated
+-- Each language block can be individually disabled using /dis
+-- Backend module can be linked from main.adpt via <link id="backend1.adpt">

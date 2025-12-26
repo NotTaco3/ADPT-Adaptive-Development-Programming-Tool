@@ -1,0 +1,303 @@
+-- Made by Taco_Develops
+-- ADPT – Adaptive Development Programming Tool
+-- Main syntax example (single-file reference)
+-- Notes are ignored by default, when importing from specific names!
+-- ' ' or " " are both valid for wrapping values
+
+--------------------------------------------------------------
+--- 1. COMMENT & NOTE SYSTEM
+--------------------------------------------------------------
+
+-- Single-line note
+--- Multi-line note
+--- Used for explanations and documentation
+--- Never executed
+
+--------------------------------------------------------------
+--- 2. GLOBAL IMPORT SYSTEM
+--------------------------------------------------------------
+
+--- Import entire modules so their IDs are available
+import id='frontend frontend1.adpt'
+import id='backend backend1.adpt'
+import id='database database1.adpt'
+
+-- Or in the main.adpt, inside of a <frontend> <backend> or <database> tag
+import id='html1'
+
+--- Cross-file import using ID + filename
+--- Format: import id="[id] [filename]"
+import id="data database1.adpt"
+
+--------------------------------------------------------------
+--- 3. LINE NUMBER (LN) HOOK
+--------------------------------------------------------------
+
+--- Pull a specific section from a file
+--- Notes are ignored automatically
+--- Useful for partial imports and testing
+
+import id='html1, UseLineNum[frontend1.adpt, 12]'
+--                ^ This Hook is used to get specifics lines in the selected code
+--------------------------------------------------------------
+--- 4. FRONTEND EXECUTION SECTION
+--------------------------------------------------------------
+
+<frontend, main>
+    --- Frontend-only execution scope
+    --- Max 3 frontend languages per file
+
+    import id='html1'
+    import id='css1'
+    import id='javascript1'
+
+    --- Disable frontend code example
+    /dis <typescript id="ts1">
+        console.log("Disabled frontend logic")
+    </typescript> dis/
+</frontend>
+
+--------------------------------------------------------------
+--- 5. DATABASE EXECUTION SECTION
+--------------------------------------------------------------
+
+<database, main>
+    --- Database logic is isolated
+    --- Backend must import databases indirectly
+
+    import id='postgres1'
+    import id='mongo1'
+</database>
+
+--------------------------------------------------------------
+--- 6. BACKEND EXECUTION SECTION
+--------------------------------------------------------------
+
+<backend, main>
+    --- Backend computation and logic
+    --- Multiple languages allowed (max 3)
+
+    import id='python1'
+    import id='java1'
+
+    --- Disabled backend block example
+    /dis <ruby id="ruby1">
+        puts "This backend block is disabled"
+    </ruby> dis/
+</backend>
+
+--------------------------------------------------------------
+--- 7. ID SYSTEM RULES
+--------------------------------------------------------------
+
+--- Every module or block must have a unique ID
+--- IDs prevent overlap between languages
+--- Code communicates only through imports
+
+--------------------------------------------------------------
+--- 8. /dis DISABLE SYSTEM
+--------------------------------------------------------------
+
+--- /dis fully disables any wrapped block
+--- Code stays in the file but is ignored
+--- Used for testing, debugging, and performance checks
+
+/dis <lua id="lua1">
+    print("This code will not run")
+</lua> dis/
+
+--------------------------------------------------------------
+--- 9. EXECUTION MODEL SUMMARY
+--------------------------------------------------------------
+
+--- main.adpt controls everything
+--- frontend = UI only
+--- backend = logic only
+--- database = data only
+--- No direct frontend ↔ database access
+--- No frameworks (yet)
+--- Clean, predictable execution
+
+--------------------------------------------------------------
+--- END OF ADPT SYNTAX EXAMPLE
+--------------------------------------------------------------
+
+-- down here are some main.adpts, some frontends, some backends and a few databases, so you can practise
+-- your adpt knowlege!
+
+-- SYNTAX TEST!
+-- This area intentionally contains mistakes
+-- Used for learning ADPT rules
+
+--------------------------------------------------------------
+--- TEST 1 – FRONTEND (HTML + CSS + JAVASCRIPT)
+--- ERROR TYPE: 
+--------------------------------------------------------------
+
+<frontend, test1>
+
+<html id="html_test1">
+    <div>Hello ADPT</div>
+
+
+<css id="css_test1">
+    body {
+        background: red;
+    }
+</css>
+
+<javascript id="js_test1">
+    console.log("JS test 1");
+</javascript>
+
+</frontend>
+
+--------------------------------------------------------------
+--- TEST 2 – FRONTEND (HTML + CSS + TYPESCRIPT)
+--- ERROR TYPE:
+--------------------------------------------------------------
+
+<frontend, test2>
+
+<html id="html_test2"></html>
+<css id="css_test2"></css>
+
+<typescript id="ts_test2">
+    let x: number = "not a number";
+</typescript>
+
+<javascript id="js_test2">
+    console.log("This should disable HTML by rule");
+</javascript>
+
+</frontend>
+
+--------------------------------------------------------------
+--- TEST 3 – FRONTEND (HTML + CSS + JS)
+--- ERROR TYPE:
+--------------------------------------------------------------
+
+<frontend, test3>
+
+<html id="html_dup"></html>
+
+<css id="html_dup">
+body { color: blue; }
+</css>
+
+<javascript id="js_test3">
+    console.log("Duplicate ID test");
+</javascript>
+
+</frontend>
+
+--------------------------------------------------------------
+--- TEST 4 – BACKEND (PYTHON + JAVA + LUA)
+--- ERROR TYPE:
+--------------------------------------------------------------
+
+<backend, test4>
+
+<python id="py_test4">
+print("Python OK")
+</python>
+
+<java id="java_test4">
+public class Test {
+    public static void main(String[] args) {
+        System.out.println("Java OK");
+    }
+}
+</java>
+
+<lua id="lua_test4">
+print("Lua OK")
+</lua>
+
+<ruby id="ruby_test4">
+puts "ERROR: 4th backend language"
+</ruby>
+
+</backend>
+
+--------------------------------------------------------------
+--- TEST 5 – BACKEND (IMPORT ERROR)
+--- ERROR TYPE:
+--------------------------------------------------------------
+
+<backend, test5>
+
+<python id="py_test5">
+import id="data-database1.adpt"
+</python>
+
+</backend>
+
+--------------------------------------------------------------
+--- TEST 6 – DATABASE (POSTGRESQL)
+--- ERROR TYPE:
+--------------------------------------------------------------
+
+<database, test6>
+
+<postgresql id="pg_test6">
+CREATE demo_table (
+    id SERIAL,
+    name TEXT
+);
+
+</postgresql>
+
+</database>
+
+--------------------------------------------------------------
+--- TEST 7 – DATABASE (MONGODB)
+--- ERROR TYPE:
+--------------------------------------------------------------
+
+<database, test7>
+
+<mongodb id="mongo_test7">
+db.items.insertOne({
+    name: "apple",
+    created_at: new Date("26/12/25 16:14")
+});
+</mongodb>
+
+</database>
+
+--------------------------------------------------------------
+--- TEST 8 – /dis SYNTAX ERROR
+--- ERROR TYPE:
+--------------------------------------------------------------
+
+/dis <frontend id="broken_dis">
+<html id="html_dis"></html>
+</frontend>
+
+--------------------------------------------------------------
+--- TEST 9 – LN HOOK ERROR
+--- ERROR TYPE:
+--------------------------------------------------------------
+
+import id='html1, UseLineNum[frontend1.adpt, 9999]'
+
+--------------------------------------------------------------
+--- TEST 10 – SECTION VIOLATION
+--- ERROR TYPE:
+--------------------------------------------------------------
+
+<frontend, test10>
+
+<html id="html_test10"></html>
+<css id="css_test10"></css>
+
+<postgresql id="pg_wrong">
+SELECT * FROM demo_table;
+</postgresql>
+
+</frontend>
+
+--------------------------------------------------------------
+--- END OF ADPT SYNTAX TEST!
+--------------------------------------------------------------

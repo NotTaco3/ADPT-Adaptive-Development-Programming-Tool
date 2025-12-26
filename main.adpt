@@ -1,0 +1,34 @@
+-- Made by Taco_Develops
+-- ADPT-Adaptive Development Programming Tool
+-- Main entry point demonstrating module linking using IDs
+-- You Can use ' ' or " " when wrapping things!
+-- To pull a specific piece of code use the LN hook, 'UseLineNum[filename]'
+-- It can also ignore notes by default!
+
+example!
+
+import id='html1, UseLineNum[frontend1.adpt, 12]'
+
+--------------------------------------------------------------
+
+import id='frontend frontend1.adpt'
+import id='backend backend1.adpt'
+import id='database1.adpt'
+
+<frontend, main>
+    import id='html1'
+    import id='css1'
+    import id='javascript1'
+</frontend>
+
+--------------------------------------------------------------
+
+<database, main>
+    import id='mongo1'
+</database>
+
+--------------------------------------------------------------
+
+<backend, main>
+    import id='python1'
+</backend>
